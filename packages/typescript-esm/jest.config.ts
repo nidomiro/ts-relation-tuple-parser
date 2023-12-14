@@ -1,11 +1,12 @@
 /* eslint-disable */
 export default {
   displayName: 'typescript-esm',
-  preset: '../../jest.preset.js',
+  preset: '../../jest.preset.cjs',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
+    '^.+\\.[tjm]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json', useESM: true }],
   },
-  moduleFileExtensions: ['ts', 'js', 'html'],
+  moduleFileExtensions: ['ts', 'js', 'mjs'],
+  extensionsToTreatAsEsm: ['.ts'],
   coverageDirectory: '../../coverage/packages/typescript-esm',
 }
