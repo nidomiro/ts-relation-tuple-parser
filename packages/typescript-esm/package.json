@@ -1,7 +1,12 @@
 {
-  "name": "typescript-esm",
+  "name": "@nidomiro/relation-tuple-parser-esm",
   "version": "0.0.1",
   "dependencies": {},
-  "type": "commonjs",
-  "main": "./index.cjs"
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    "types": "./src/index.d.ts",
+    "import": "./src/index.js",
+    "default": "./src/index.js"
+  }
 }
