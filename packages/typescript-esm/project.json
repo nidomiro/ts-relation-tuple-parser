@@ -1,0 +1,32 @@
+{
+  "name": "typescript-esm",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/typescript-esm/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/typescript-esm",
+        "main": "packages/typescript-esm/src/index.ts",
+        "tsConfig": "packages/typescript-esm/tsconfig.lib.json",
+        "assets": ["packages/typescript-esm/*.md"],
+        "generatePackageJson": true,
+        "format": ["esm"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/typescript-esm/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
