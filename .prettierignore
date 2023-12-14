@@ -3,3 +3,5 @@
 /dist
 /coverage
 /packages/typescript/src/lib/generated
+
+/.nx/cache

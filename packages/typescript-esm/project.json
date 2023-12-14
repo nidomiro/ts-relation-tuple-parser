@@ -1,0 +1,46 @@
+{
+  "name": "typescript-esm",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/typescript-esm/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/typescript-esm",
+        "main": "packages/typescript-esm/src/index.ts",
+        "tsConfig": "packages/typescript-esm/tsconfig.esm.json",
+        "assets": ["packages/typescript-esm/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "peerDependencies"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/typescript-esm/**/*.ts", "packages/typescript-esm/package.json"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/typescript-esm/jest.config.ts"
+      }
+    },
+    "generate-parser": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "rm -rf src/lib/generated/antlr",
+          "antlr4ng -Dlanguage=TypeScript -no-listener -visitor RelationTuple.g4 -o src/lib/generated/antlr"
+        ],
+        "cwd": "packages/typescript-esm",
+        "parallel": false
+      }
+    }
+  },
+  "tags": []
+}

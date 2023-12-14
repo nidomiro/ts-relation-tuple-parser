@@ -8,16 +8,31 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2022",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2022"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nidomiro/relation-tuple-parser": ["packages/typescript/src/index.ts"],
-      "@nidomiro/relation-tuple-parser-ory-keto": ["packages/typescript-ory-keto/src/index.ts"]
+      "@nidomiro/relation-tuple-parser": [
+        "packages/typescript/src/index.ts"
+      ],
+      "@nidomiro/relation-tuple-parser-esm": [
+        "packages/typescript-esm/src/index.ts"
+      ],
+      "@nidomiro/relation-tuple-parser-ory-keto": [
+        "packages/typescript-ory-keto/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "ts-node": {
+    "esm": true,
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

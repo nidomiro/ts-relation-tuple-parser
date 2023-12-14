@@ -1,11 +1,11 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "typescript-ory-keto",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/typescript-ory-keto/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/typescript-ory-keto",
@@ -22,18 +22,14 @@
       "dependsOn": ["build"]
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["packages/typescript-ory-keto/**/*.ts"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "packages/typescript-ory-keto/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/typescript-ory-keto/jest.config.ts"
       }
     }
   },
